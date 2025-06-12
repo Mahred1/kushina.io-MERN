@@ -22,7 +22,20 @@ const recipeSchema = mongoose.Schema({
   cookingTime: String,
 });
 
+const favSchema = mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users",
+  },
+  recipes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "recipes",
+    },
+  ],
+});
 const user = mongoose.model("Users", userSchema);
 const recipe = mongoose.model("recipes", recipeSchema);
+const fav = mongoose.model("Favourites", favSchema);
 
-module.exports = {user,recipe};
+module.exports = { user, recipe,fav };

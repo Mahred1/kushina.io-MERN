@@ -8,6 +8,7 @@ const recipeInputValidation = require("./middlewares/recipeInputValidation");
 const LoginInputValidation = require("./middlewares/loginInputValidation");
 const { user } = require("./db/index");
 const { recipe } = require("./db/index");
+const { fav } = require("./db/index");
 const JWT_PASS = "secret1234";
 
 const app = express();
@@ -189,24 +190,59 @@ app.put(
 );
 
 // Delete recipe
-app.delete("/recipes/delete/:id",validateAdmin, async (req,res)  => {
+app.delete("/recipes/delete/:id", validateAdmin, async (req, res) => {
   const currentId = req.params.id;
 
   // check if recipe exists
-  checkRecipe = await recipe.findOne({id:currentId})
-  if(!checkRecipe){
-    res.status(404).json({error:"a recipe with this id does not exist"})
-    return
+  checkRecipe = await recipe.findOne({ id: currentId });
+  if (!checkRecipe) {
+    res.status(404).json({ error: "a recipe with this id does not exist" });
+    return;
   }
 
-  try{
-    await recipe.deleteOne({id:currentId})
-    res.status(200).json({msg:"recipe deleted"})
-
-  }catch(err){
-    res.sendStatus(500).json({error:err})
+  try {
+    await recipe.deleteOne({ id: currentId });
+    res.status(200).json({ msg: "recipe deleted" });
+  } catch (err) {
+    res.sendStatus(500).json({ error: err });
   }
-})
+});
+
+app.post("/fav", validateUser, async (req, res) => {
+  const currentUser = req.currentUser;
+  const recipeId = req.body.id;
+  const myUser = await user.findOne({ id: currentUser.id }); //user object from db
+  const userId = myUser._id; //oj id of the user
+  const userFav = await fav.findOne({ user: userId });//fav collection obj of the user
+  const currentRecipe = await recipe.findOne({ id: recipeId });
+console.log(userFav)
+  if (!currentRecipe) {
+    res.status(404).json({ error: "no recipe found" });
+    return;
+  }
+  const myRecipe = currentRecipe._id;//obj id of the recipe
+
+  try {
+    if (!userFav) {
+      await fav.create({
+        user: userId,
+        recipes: [myRecipe],
+      });
+    } else {
+      if(userFav.recipes.includes(myRecipe)){
+        res.status(409).json({error:"alreadey included"})
+        return
+      }
+      await fav.updateOne(
+        { user: userId },
+        { recipes: [...userFav.recipes, myRecipe] }
+      );
+    }
+    res.status(200).json({ msg: "recipe added to favourites" });
+  } catch (err) {
+    res.send(err);
+  }
+});
 app.listen(3000, (err) => {
   if (err) console.log(err);
   console.log("running at 3000");
