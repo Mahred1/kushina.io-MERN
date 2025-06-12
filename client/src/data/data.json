@@ -1,0 +1,186 @@
+{
+    "recipes": [
+      {
+        "id": "vegetable-stir-fry",
+        "name": "Vegetable Stir Fry",
+        "category": "Veg",
+        "author": "Alex Smith",
+        "imageUrl": "vegi.jpg",
+        "ingredients": [
+          { "name": "Broccoli", "quantity": "2 cups", "id": "22323" },
+          { "name": "Bell Peppers", "quantity": "1", "id": "243242" },
+          { "name": "Carrots", "quantity": "2", "id": "2242122" },
+          { "name": "Soy Sauce", "quantity": "3 tbsp", "id": "2232132" },
+          { "name": "Garlic", "quantity": "2 cloves", "id": "222131232" }
+        ],
+        "instructions": [
+          "Chop vegetables.",
+          "Heat oil in a wok.",
+          "Stir-fry garlic, then add veggies.",
+          "Add soy sauce and cook for 5 minutes."
+        ],
+        "cookingTime": "15 minutes"
+      },
+      {
+        "id": "avocado-toast",
+        "name": "Avocado Toast",
+        "category": "Meat-based",
+        "author": "Emma Green",
+        "imageUrl": "pancake.jpg",
+        "ingredients": [
+          { "name": "Bread", "quantity": "2 slices", "id": "2312312" },
+          { "name": "Avocado", "quantity": "1", "id": "2132131" },
+          { "name": "Lemon Juice", "quantity": "1 tsp", "id": "665765756" },
+          { "name": "Salt", "quantity": "to taste", "id": "79879878" }
+        ],
+        "instructions": [
+          "Toast the bread.",
+          "Mash avocado with lemon juice and salt.",
+          "Spread on toast."
+        ],
+        "cookingTime": "5 minutes"
+      },
+      {
+        "id": "beef-tacos",
+        "name": "Beef Tacos",
+        "category": "Desert",
+        "author": "Carlos Ruiz",
+        "imageUrl": "taco.jpg",
+        "ingredients": [
+          { "name": "Ground Beef", "quantity": "1 lb", "unit": "" },
+          { "name": "Taco Shells", "quantity": "8", "unit": "" },
+          { "name": "Lettuce", "quantity": "1 cup", "unit": "" },
+          { "name": "Cheese", "quantity": "1/2 cup", "unit": "" }
+        ],
+        "instructions": [
+          "Brown the beef in a pan.",
+          "Warm taco shells.",
+          "Assemble with beef, lettuce, and cheese."
+        ],
+        "cookingTime": "20 minutes"
+      },
+      {
+        "id": "blueberry-smoothie",
+        "name": "Blueberry Smoothie",
+        "category": "Diary",
+        "author": "Lisa Park",
+        "imageUrl": "berry.jpg",
+        "ingredients": [
+          { "name": "Blueberries", "quantity": "1 cup", "unit": "" },
+          { "name": "Yogurt", "quantity": "1/2 cup", "unit": "" },
+          { "name": "Milk", "quantity": "1/2 cup", "unit": "" }
+        ],
+        "instructions": [
+          "Blend all ingredients until smooth."
+        ],
+        "cookingTime": "5 minutes"
+      },
+      {
+        "id": "chicken-curry",
+        "name": "Chicken Curry",
+        "category": "Meat-based",
+        "author": "Raj Patel",
+        "imageUrl": "curry.jpg",
+        "ingredients": [
+          { "name": "Chicken", "quantity": "1 lb", "unit": "" },
+          { "name": "Coconut Milk", "quantity": "1 can", "unit": "" },
+          { "name": "Curry Powder", "quantity": "2 tbsp", "unit": "" }
+        ],
+        "instructions": [
+          "Cook chicken in a pan.",
+          "Add coconut milk and curry powder.",
+          "Simmer for 20 minutes."
+        ],
+        "cookingTime": "30 minutes"
+      },
+      {
+        "id": "greek-salad",
+        "name": "Greek Salad",
+        "category": "Veg",
+        "author": "Maria Kostas",
+        "imageUrl": "greek.jpg",
+        "ingredients": [
+          { "name": "Cucumber", "quantity": "1", "unit": "" },
+          { "name": "Tomatoes", "quantity": "2", "unit": "" },
+          { "name": "Feta Cheese", "quantity": "1/2 cup", "unit": "" }
+        ],
+        "instructions": [
+          "Chop cucumber and tomatoes.",
+          "Crumble feta on top.",
+          "Drizzle with olive oil."
+        ],
+        "cookingTime": "10 minutes"
+      },
+      {
+        "id": "pancakes",
+        "name": "Pancakes",
+        "category": "Desert",
+        "author": "Tom Baker",
+        "imageUrl": "pancake.jpg",
+        "ingredients": [
+          { "name": "Flour", "quantity": "1 cup", "unit": "" },
+          { "name": "Milk", "quantity": "1 cup", "unit": "" },
+          { "name": "Egg", "quantity": "1", "unit": "" }
+        ],
+        "instructions": [
+          "Mix ingredients into a batter.",
+          "Cook on a griddle until golden."
+        ],
+        "cookingTime": "15 minutes"
+      },
+      {
+        "id": "tomato-soup",
+        "name": "Tomato Soup",
+        "category": "Veg",
+        "author": "Sophie Lane",
+        "imageUrl": "tomato.jpg",
+        "ingredients": [
+          { "name": "Tomatoes", "quantity": "6", "unit": "" },
+          { "name": "Onion", "quantity": "1", "unit": "" },
+          { "name": "Garlic", "quantity": "2 cloves", "unit": "" }
+        ],
+        "instructions": [
+          "Sauté onion and garlic.",
+          "Add chopped tomatoes and simmer.",
+          "Blend until smooth."
+        ],
+        "cookingTime": "25 minutes"
+      },
+      {
+        "id": "chocolate-mousse",
+        "name": "Chocolate Mousse",
+        "category": "Dessert",
+        "author": "Claire Desserts",
+        "imageUrl": "tomato.jpg",
+        "ingredients": [
+          { "name": "Dark Chocolate", "quantity": "200g", "unit": "" },
+          { "name": "Heavy Cream", "quantity": "1 cup", "unit": "" },
+          { "name": "Sugar", "quantity": "2 tbsp", "unit": "" }
+        ],
+        "instructions": [
+          "Melt chocolate.",
+          "Whip cream with sugar.",
+          "Fold chocolate into cream.",
+          "Chill for 2 hours."
+        ],
+        "cookingTime": "2 hours (chilling)"
+      },
+      {
+        "id": "grilled-salmon",
+        "name": "Grilled Salmon",
+        "category": "Meat-based",
+        "author": "Fisher King",
+        "imageUrl": "salmon.jpg",
+        "ingredients": [
+          { "name": "Salmon Fillet", "quantity": "1 lb", "unit": "" },
+          { "name": "Lemon", "quantity": "1", "unit": "" },
+          { "name": "Dill", "quantity": "1 tbsp", "unit": "" }
+        ],
+        "instructions": [
+          "Season salmon with lemon and dill.",
+          "Grill for 5 minutes per side."
+        ],
+        "cookingTime": "10 minutes"
+      }
+    ]
+  }
