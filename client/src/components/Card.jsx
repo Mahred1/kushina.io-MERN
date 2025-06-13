@@ -12,11 +12,11 @@ const Card = memo(function Card({ recipe }) {
       const newFav = favourite.filter((fav) => fav.id !== recipe.id);
 
       const res = await fetch(
-        `http://127.0.0.1:8000/recipebook/favorites/${recipe.id}/`,
+        `http://localhost:3000/fav/${recipe.id}/`,
         {
           method: "DELETE",
           headers: {
-            Authorization: `JWT ${localStorage.getItem("user")}`,
+            Authorization: `${localStorage.getItem("user")}`,
           },
         }
       );
@@ -27,10 +27,10 @@ const Card = memo(function Card({ recipe }) {
       }
     } else {
       const newFav = [...favourite, recipe];
-      const res = await fetch("http://127.0.0.1:8000/recipebook/favorites/", {
+      const res = await fetch("http://localhost:3000/fav", {
         method: "POST",
         headers: {
-          Authorization: `JWT ${localStorage.getItem("user")}`,
+          Authorization: `${localStorage.getItem("user")}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ id: recipe.id }),
