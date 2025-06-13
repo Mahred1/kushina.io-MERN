@@ -66,11 +66,11 @@ function RecipesContext({ children }) {
       async function getFav() {
         if (user) {
           const res = await fetch(
-            "http://127.0.0.1:8000/recipebook/favorites/",
+            "http://localhost:3000/fav",
             {
               method: "GET",
               headers: {
-                Authorization: `JWT ${localStorage.getItem("user")}`,
+                Authorization: `${localStorage.getItem("user")}`,
               },
             }
           );

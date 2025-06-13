@@ -265,9 +265,9 @@ app.get("/fav", validateUser, async (req, res) => {
   }
 });
 
-app.delete('/fav',validateUser, async (req,res)=>{
+app.delete('/fav/:id',validateUser, async (req,res)=>{
    const currentUser = req.currentUser;
-   const id= req.body.id
+   const id= req.params.id
     const myUser = await user.findOne({ id: currentUser.id }); //user object from db
     const userId = myUser._id; //obj id of the user
     const userFav = await fav.findOne({ user: userId });

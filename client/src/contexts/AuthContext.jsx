@@ -13,7 +13,7 @@ function AuthContext({ children }) {
     function () {
       async function getUser() {
         const token = localStorage.getItem("user");
-        const res = await fetch("http://localhost:3000/recipes", {
+        const res = await fetch("http://localhost:3000/fav", {
           method: "GET",
           headers: {
             Authorization: `${token}`,
