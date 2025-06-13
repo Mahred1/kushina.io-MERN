@@ -213,14 +213,13 @@ app.post("/fav", validateUser, async (req, res) => {
   const recipeId = req.body.id;
   const myUser = await user.findOne({ id: currentUser.id }); //user object from db
   const userId = myUser._id; //oj id of the user
-  const userFav = await fav.findOne({ user: userId });//fav collection obj of the user
+  const userFav = await fav.findOne({ user: userId }); //fav collection obj of the user
   const currentRecipe = await recipe.findOne({ id: recipeId });
-console.log(userFav)
   if (!currentRecipe) {
     res.status(404).json({ error: "no recipe found" });
     return;
   }
-  const myRecipe = currentRecipe._id;//obj id of the recipe
+  const myRecipe = currentRecipe._id; //obj id of the recipe
 
   try {
     if (!userFav) {
@@ -229,9 +228,9 @@ console.log(userFav)
         recipes: [myRecipe],
       });
     } else {
-      if(userFav.recipes.includes(myRecipe)){
-        res.status(409).json({error:"alreadey included"})
-        return
+      if (userFav.recipes.includes(myRecipe)) {
+        res.status(409).json({ error: "alreadey included" });
+        return;
       }
       await fav.updateOne(
         { user: userId },
@@ -241,6 +240,29 @@ console.log(userFav)
     res.status(200).json({ msg: "recipe added to favourites" });
   } catch (err) {
     res.send(err);
+  }
+});
+app.get("/fav", validateUser, async (req, res) => {
+  const currentUser = req.currentUser;
+  try {
+    const myUser = await user.findOne({ id: currentUser.id }); //user object from db
+    const userId = myUser._id; //obj id of the user
+    const userFav = await fav.findOne({ user: userId }); //fav collection obj of the user
+    
+
+    if (!userFav) {
+      res.status(404).json({ error: "user has no favourite" });
+      return;
+    }
+    const recipes = userFav.recipes;
+    const recipeId = [];
+    for (const recId of recipes) {
+      const currentRecipe = await recipe.findOne({ _id: recId });
+      recipeId.push({ id: currentRecipe.id });
+    }
+    res.status(200).json(recipeId);
+  } catch (err) {
+    res.status(500).json({ error: err });
   }
 });
 app.listen(3000, (err) => {
