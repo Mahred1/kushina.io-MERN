@@ -248,7 +248,6 @@ app.get("/fav", validateUser, async (req, res) => {
     const myUser = await user.findOne({ id: currentUser.id }); //user object from db
     const userId = myUser._id; //obj id of the user
     const userFav = await fav.findOne({ user: userId }); //fav collection obj of the user
-    
 
     if (!userFav) {
       res.status(404).json({ error: "user has no favourite" });
@@ -265,6 +264,34 @@ app.get("/fav", validateUser, async (req, res) => {
     res.status(500).json({ error: err });
   }
 });
+
+app.delete('/fav',validateUser, async (req,res)=>{
+   const currentUser = req.currentUser;
+   const id= req.body.id
+    const myUser = await user.findOne({ id: currentUser.id }); //user object from db
+    const userId = myUser._id; //obj id of the user
+    const userFav = await fav.findOne({ user: userId });
+    const recipeId= await recipe.findOne({id})
+
+    if(!recipeId){
+      res.status(404).json({error:"recipe not found"})
+      return
+    }
+    if(!userFav.recipes.includes(recipeId._id)){
+      res.status(404).json({error:"recipe not in fav list"})
+      return
+    }
+    try{
+      const myRecipes= userFav.recipes.filter(rec=>JSON.stringify(rec)!==JSON.stringify(recipeId._id))
+
+      await fav.updateOne({user:userId},{recipes:myRecipes})
+      res.status(200).json({msg:"recipe removed from fav"})
+    }catch(err){
+      res.status(500).json({error:err})
+    }
+  
+
+})
 app.listen(3000, (err) => {
   if (err) console.log(err);
   console.log("running at 3000");
